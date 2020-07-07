@@ -13,21 +13,41 @@ from PIL import Image,ImageFilter,ImageEnhance
 #writing App title 
 st.title('Eris Data Analysis')
 
-st.subheader("Simple web app with Streamlit")
-"""
-    	#### Description
-    	+ This is a simple Exploratory Data Analysis  of the Iris Dataset depicting the various species built with Streamlit.
-    	#### Purpose
-    	+ To show a simple EDA of Iris using Streamlit framework. 
-    	"""
 
+#subheader
+st.subheader("Simple web app with Streamlit")
+
+
+"""
+    	   
+    	#### Oh It's a sub heading
+    	+ Ok this too gets printed. 
+
+"""
+
+#using Html inline
+html_temp ="""
+    <div style="background-color:#025246 ;padding:5px">
+    <h2 style="color:white;text-align:center;">Yeah Html successful !</h2>
+    </div>
+    """
+st.markdown(html_temp, unsafe_allow_html=True)
+
+#printing
 st.write('Data:')
 
-#function for printing the dataframe
+#printing the dataframe
 st.write(pd.DataFrame({'column1': [1, 2, 3, 4],
     'column2': [10, 20, 30, 40]}))
 
 
+#Taking the Text Input
+
+n = st.text_input("name","Type Here")
+m = st.text_input("Middle name","Type Here")
+s= st.text_input("Surname","Type Here")
+
+m
 
 #magic commands (no need to write function name)
 
@@ -42,6 +62,8 @@ df = pd.DataFrame({
 
 df
 
+
+
 #adding line chart 
 
 """
@@ -54,6 +76,8 @@ chart_data = pd.DataFrame(
 
 st.line_chart(chart_data)
 
+#----------------------------->
+
 #ploting a map
 
 # map_data = pd.DataFrame(
@@ -62,6 +86,7 @@ st.line_chart(chart_data)
 
 # st.map(map_data)
 
+#----------------------------->
 
 #using check box to hide or show something 
 
@@ -72,15 +97,20 @@ if st.checkbox('Show dataframe'):
 
     st.line_chart(chart_data)
 
+#------------------------------>
+
+
 #USing selectbox to choose from a series.
 
-# option = st.selectbox(
-#     'Which number do you like best?',
-#      df['column1'])
+option = st.selectbox(
+    'Which number do you like best?',
+     df['column1'])
 
-# 'You selected: ', option
+'You selected: ', option
 
-#
+#----------------------------->
+
+#Usinf selectbox in a sidebar and displaying result in main  page
 df=['Linear','Logistic','SVM']
 df2=['Images','Data','DataAnalysis']
 option = st.sidebar.selectbox(
@@ -90,8 +120,11 @@ option = st.sidebar.selectbox(
 'You selected:', option
 
 dataset="iris.csv"
- # To Improve speed and cache data
-# Show Image or Hide Image with Checkbox
+
+
+#---------------------------------------------->
+
+# Show Image or Hide Image with Checkbox and some enhancing properties
 
 
 @st.cache
@@ -106,7 +139,12 @@ if st.checkbox("Show Image/Hide Image"):
 	st.image(enh.enhance(num),width=img_width)
 
 
-# Select Image Type using Radio Button
+
+#----------------------------------------------->
+
+
+# Select which Image you want to see using Radio Button
+
 species_type = st.radio('What is the Iris Species do you want to see?',('Setosa','Versicolor','Virginica'))
 if species_type == 'Setosa':
       st.text("Showing Setosa Species")
@@ -118,15 +156,21 @@ elif species_type == 'Virginica':
   st.text("Showing Virginica Species")
   st.image(load_image('iris_virginica.jpg'))
 
+#------------------------------------------------->
+
 # About
+#button
 if st.button("About App"):
   st.subheader("Iris Dataset EDA App")
   st.text("Built with Streamlit")
   st.text("Thanks to the Streamlit Team Amazing Work")
   """Thank You    """
 
+#-------------------------------------------------->
 
+
+#checkbox again
 
 if st.checkbox("By"):
-  st.text("Madhura KOngutte")
+  st.write("Madhura Kongutte")
    
